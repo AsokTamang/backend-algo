@@ -13,7 +13,7 @@ const playlistHtml = []
 
 
     playlistHtml.push(
-        
+
 `<section class="card">
     <div class="card-start">
         <img src="/images/${playlistArr[i].albumArt}">
@@ -31,3 +31,7 @@ const playlistHtml = []
 
 
 document.getElementById('container').innerHTML = playlistHtml
+
+
+//we use map method only when it is required to return the new array
+//and we use forEach method when it is required for just iterating over the array but not to return the new array
