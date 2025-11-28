@@ -181,7 +181,8 @@ const bookKeys=Object.keys(books)  //this will create an array of the keys store
 const keys = ()=>bookKeys.forEach((book)=>console.log(book))  //this prints the keys 
 const titles = ()=>bookKeys.forEach((book)=>console.log(books[book]))  //this prints the title based on the keys
 
-
+const bookvalues = Object.values(books)
+bookvalues.forEach((bv)=bv.price)
 /*
 Output: b001
         b002
