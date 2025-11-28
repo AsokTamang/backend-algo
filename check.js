@@ -66,3 +66,26 @@ Challenge:
    all of the data from the 4 arrays above.
 */
 findPriceExtremes([...averageSharePriceByMonthQ1,...averageSharePriceByMonthQ2,...averageSharePriceByMonthQ3,...averageSharePriceByMonthQ4])
+
+
+const studentDetails = {
+    firstName: 'janaka',
+    lastName: 'siriwardena',
+    age: 28,
+    country: 'sri lanka',
+    email: 'j.siri@totalinternet.com',
+    discordUsername: 'JS1',
+    address:{
+        name:'kathmandu'
+    }
+    }  
+
+ 
+const studentDetailsCopy = {}
+
+Object.assign(studentDetailsCopy, studentDetails)  //assign is for making the shallow copy of an object using the attribute target,source
+studentDetailsCopy.address.name = 'Pokhara'   
+//changing the data in the shallow copy of the original , can change the data of the original too
+
+console.log(studentDetailsCopy)
+console.log(studentDetails)
