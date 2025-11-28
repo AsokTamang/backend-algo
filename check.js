@@ -10,3 +10,34 @@ final = []
 v=a.filter((data)=>data[1].price>16).map((data)=>console.log(`ID:${data[0]} Book:${data[1].title} £${data[1].price}`))
 
 console.log(v)
+
+
+const user1 = {
+  username: "rpchan",
+  subscriptionLevel: "bronze",
+}
+
+const user2 = {
+  username: "bcstevens",
+  subscriptionLevel: "silver",
+  accessPremiumFeature: true
+}
+
+function canAccessPremiumFeature(userObj, prop) {
+/*
+Challenge:
+1. Write logic to check if the object has the property. 
+   Do this challenge twice, once with hasOwn and once 
+   with hasOwnProperty. All the function need do is return
+   a boolean. 
+   Bonus: use short circuiting to only return true if 
+   'accessPremiumFeature' both exists AND is true.
+   u
+*/ 
+return Object.hasOwn(userObj,prop) && userObj.hasOwnProperty(prop)  //hasown is based on the Object whereas hasownproperty is based on the object data itself
+
+}
+
+console.log(canAccessPremiumFeature(user1, 'accessPremiumFeature'))
+console.log(canAccessPremiumFeature(user2, 'accessPremiumFeature')) 
+
