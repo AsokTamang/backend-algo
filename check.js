@@ -139,17 +139,19 @@ Challenge:
 
 
 class Character {
-  constructor(name, collectedItemsArr = []) {
+  constructor(name) {
     this.name = name
-    this.collectedItemsArr = collectedItemsArr
-    this.addItem = function (item) {   //this function takes an item as a parameter which is used for adding to the collectedItemsArr
+    this.collectedItemsArr = []
+  }
+    
+    addItem(item) {   //this function takes an item as a parameter which is used for adding to the collectedItemsArr
       this.collectedItemsArr.push(item)
       console.log(`${this.name} now has : ${this.collectedItemsArr.join(',')}`)
     }
 
 
   }
-}
+
 
 
 
