@@ -304,3 +304,21 @@ Challenge:
 
 const safari = new Holiday('Kenya', 1000)
 console.log(safari.price)
+
+/*
+Challenge:
+    1. Add a hidden property to the book object 
+       holding a librarian’s note to say the book 
+       has gone missing. 
+    2. Log out the new property.
+*/
+
+const book = {
+    title: "The Catcher in the Rye",
+    author: "J.D. Salinger",
+    year: 1951,
+    [note]:'Book has gone missing'  //here [note] makes the note as hidden property
+}
+const note = Symbol()  //here we are creating an instance of symbol
+book[note] = 'Book has gone missing'
+console.log(book[note])
