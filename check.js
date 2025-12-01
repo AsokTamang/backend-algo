@@ -313,6 +313,8 @@ Challenge:
     2. Log out the new property.
 */
 
+//so a new Map() method is a type of map method where the objects can also be keys and the values can be anything
+
 const book = {
     title: "The Catcher in the Rye",
     author: "J.D. Salinger",
@@ -322,3 +324,19 @@ const book = {
 const note = Symbol()  //here we are creating an instance of symbol
 book[note] = 'Book has gone missing'
 console.log(book[note])
+
+
+const athlete1 = { name: "Alice", age: "50" }
+const athlete2 = { name: "Dave", age: "51" }
+const athlete3 = { name: "Nicky", age: "49" }
+
+const finishers = new Map()
+
+finishers.set(athlete1, 10000)
+finishers.set(athlete2, 10200)
+finishers.set(athlete3, 9800)
+
+// finishers.forEach((value, key)=> console.log(key.name, value))
+// console.log(finishers.size)
+finishers.delete(athlete3)
+
