@@ -258,5 +258,49 @@ Challenge:
    (🤔 How can you use JS to get the time right now?)
 */
 }
-
 console.log(Employee.getNewIntern("Dave"));
+
+
+class Holiday {    
+/*
+Challenge:
+    1. Make 'price' a private field.
+    2. Create a getter for price which appends a $ sign 
+       to the front and displays it to a max of 2 decimal 
+       places. 
+    3. Create a setter for price which updates price with a 
+       new price.
+    4. Test! 
+*/
+    #destination
+    #price
+    constructor(destination, price) {
+        this.#destination = destination
+        this.#price = price  //here we are also making the price private
+    }
+
+    get destination() {
+        return this.#destination
+    }
+
+    get price(){
+      return `$${this.#price.toFixed(2)}`   //here we are getting the price property which is a private key
+    }
+
+    set price(newprice){
+        if (typeof newprice=='string'){
+          throw new Error('Invalid new price')
+        }
+      this.#price = newprice
+    }
+
+    set destination(newDestination) {
+        if (typeof newDestination !== 'string' || newDestination.length <= 0){
+            throw new Error('Destination not valid')
+        }
+        this.#destination = newDestination
+    }
+}
+
+const safari = new Holiday('Kenya', 1000)
+console.log(safari.price)
