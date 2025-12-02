@@ -422,3 +422,24 @@ const warnLogger = logMessage('warn') //here we are just passing the level param
 const infoLogger = logMessage('info')
 const errorLogger=logMessage('error') 
 console.log(warnLogger('Low disk space'));   //the warnlogger function has already passed the name of the event 
+
+
+
+function handleResize(e){
+    console.log('resize happened on event: ' + e)
+    // resize happened on event: [object Event] 
+}
+
+function throttle(func, delay) {
+    let throttleTimeout = null
+    return function(...arg) {
+        if(!throttleTimeout) {
+            func.apply(this,arg)
+            throttleTimeout = setTimeout(() => {
+                throttleTimeout = null
+            }, delay)
+        } 
+    }
+}
+const throttledHandleResize = throttle(handleResize, 1000)
+window.addEventListener('resize', throttledHandleResize)
