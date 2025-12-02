@@ -344,3 +344,14 @@ console.log(daveAccount.withdraw(20))
     const weatherObj = await weather.json()
     console.log(`The weather in the ${country} today is ${weatherObj[country]}`)    
 })('UK')
+
+
+function countUp(start, end) {
+    if(start == end){
+        console.log(start);
+        return
+    }
+    console.log(start);    
+    countUp(start+1,end);
+  }
+
