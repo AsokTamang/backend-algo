@@ -365,7 +365,7 @@ function reverseStr(str,s,end) {
     return s;
   }
   
-  return reverseStr(str,s+=str[end],end-1)
+  return reverseStr(str,s+=str[end],end-1) 
   
 
     
@@ -381,20 +381,26 @@ Challenge:
 console.log(reverseStr(str,'',str.length-1))
 
 
+/*
+Challenge:
+    1. Convert this to arrow functions.
+*/
+//curryed arrow function
+const calculateVolume=(length) => (width)=>(height)=>length*width*height   //returning the volume
 
-// What is the base case? The strings length being zero.
-// SCRIMBA
-// CRIMBA
-// RIMBA
-// IMBA
-// MBA
-// BA
-// A
-// ""
-// A
-// AB
-// ABM
-// ABMI
-// ABMIR
-// ABMIRC
-// ABMIRCS
+
+function calculateVolume(length) {
+    return function(width) {
+        return function(height) {
+            return length * width * height
+        }
+    }
+}
+
+// const withLength = calculateVolume(2)
+// const withLengthAndWidth = withLength(3)
+// const volume = withLengthAndWidth(4)
+
+const volume = calculateVolume(2)(3)(4)
+
+console.log(volume)
