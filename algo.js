@@ -404,3 +404,21 @@ function calculateVolume(length) {
 const volume = calculateVolume(2)(3)(4)
 
 console.log(volume)
+
+
+/*
+Challenge:
+    1. Curry this function!
+    Set up three partially applied functions called 'infoLogger', 
+    'warnLogger', and 'errorLogger'. 
+    The partially applied functions should have their level ('info', 
+    'warn', 'error'). 
+    You should be able to call these functions and pass in a message.
+    E.g. console.log(warnLogger("Low disk space")) would log: "[WARN] Low disk space".
+    🛟 hint.md for help.
+*/
+const logMessage = (level)=>( message) => `[${level.toUpperCase()}] ${message}`
+const warnLogger = logMessage('warn') //here we are just passing the level param
+const infoLogger = logMessage('info')
+const errorLogger=logMessage('error') 
+console.log(warnLogger('Low disk space'));   //the warnlogger function has already passed the name of the event 
