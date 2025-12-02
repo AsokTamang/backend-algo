@@ -331,3 +331,16 @@ console.log(daveAccount.withdraw(20))
 
 
 // Test your code by calling the functions.
+
+
+/* Challenge:
+    1. Convert this function to an IIFE.
+       You will need to figure out how to make 
+       it async and how to pass in parameters.
+*/
+//  IIFE immediately invoked function expression
+(async function (country) {
+    const weather = await fetch('/geo.json')
+    const weatherObj = await weather.json()
+    console.log(`The weather in the ${country} today is ${weatherObj[country]}`)    
+})('UK')
