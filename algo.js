@@ -355,3 +355,46 @@ function countUp(start, end) {
     countUp(start+1,end);
   }
 
+
+
+  let str = 'SCRIMBA'
+ 
+
+function reverseStr(str,s,end) {
+  if(end<0){
+    return s;
+  }
+  
+  return reverseStr(str,s+=str[end],end-1)
+  
+
+    
+/*
+Challenge:
+    1. Write logic for a recursive function 
+       that reverses a string.
+    🛟 hint.md for help!
+*/
+
+}
+
+console.log(reverseStr(str,'',str.length-1))
+
+
+
+// What is the base case? The strings length being zero.
+// SCRIMBA
+// CRIMBA
+// RIMBA
+// IMBA
+// MBA
+// BA
+// A
+// ""
+// A
+// AB
+// ABM
+// ABMI
+// ABMIR
+// ABMIRC
+// ABMIRCS
