@@ -332,11 +332,11 @@ const athlete3 = { name: "Nicky", age: "49" }
 
 const finishers = new Map()
 
-finishers.set(athlete1, 10000)
+finishers.set(athlete1, 10000)   //here athlete acts as the key and the time acts as the value
 finishers.set(athlete2, 10200)
 finishers.set(athlete3, 9800)
 
 // finishers.forEach((value, key)=> console.log(key.name, value))
 // console.log(finishers.size)
-finishers.delete(athlete3)
+finishers.delete(athlete3)    //this code will delete the key athlete3 and its value too
 
