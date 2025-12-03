@@ -137,7 +137,7 @@ console.log(`Total characters created: ${Character.getCount()} `); // Total char
 function handleResize(e){
     console.log('resize happened on event: ' + e)
 }
-
+//so the throttle is the function that delays the task or the function for certain interval of time even if the user request it for many times.so, the function only runs after this delay
 function throttle(func, delay) {
     let throttleTimeout = null
 /*
@@ -149,7 +149,7 @@ Challenge:
 */
   return (...args)=>{   //here we are capturing the arguments
     if(!throttleTimeout) {
-      func(...args);    //then we are using the passed function with its passed parameter which is an event in this case
+      func(...args);    //then we are using the passed function with its passed parameter which is an event in this case as in the arrow function, we cannot apply 'this' method
       throttleTimeout=setTimeout(() => {
         throttleTimeout=null;
       }, delay);
@@ -158,3 +158,6 @@ Challenge:
 }
 const throttledHandleResize = throttle(handleResize, 1000)
 window.addEventListener('resize', throttledHandleResize)
+
+
+
