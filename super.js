@@ -132,3 +132,29 @@ console.log(troll.getStatus()); //Troll has 0 health and is dead.
 console.log(medea.getStatus()); // Medea has 95 health and is alive.`
 console.log(merlin.getStatus()); // Merlin has 85 health and is alive.
 console.log(`Total characters created: ${Character.getCount()} `); // Total characters created: 3
+
+
+function handleResize(e){
+    console.log('resize happened on event: ' + e)
+}
+
+function throttle(func, delay) {
+    let throttleTimeout = null
+/*
+Challenge:
+1. Recreate the logic using an arrow function. 
+   🤔 What is the best way to pass arguments remembering 
+   that ideally this throttle function is reusable?
+   🛟 hint.md for help! 
+*/
+  return (...args)=>{   //here we are capturing the arguments
+    if(!throttleTimeout) {
+      func(...args);    //then we are using the passed function with its passed parameter which is an event in this case
+      throttleTimeout=setTimeout(() => {
+        throttleTimeout=null;
+      }, delay);
+    }
+  }
+}
+const throttledHandleResize = throttle(handleResize, 1000)
+window.addEventListener('resize', throttledHandleResize)

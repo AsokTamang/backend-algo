@@ -432,7 +432,7 @@ function handleResize(e){
 
 function throttle(func, delay) {
     let throttleTimeout = null
-    return function(...arg) {
+    return function(...arg) {  //here this is a closure function
         if(!throttleTimeout) {
             func.apply(this,arg)
             throttleTimeout = setTimeout(() => {
@@ -441,5 +441,5 @@ function throttle(func, delay) {
         } 
     }
 }
-const throttledHandleResize = throttle(handleResize, 1000)
+const throttledHandleResize = throttle(handleResize, 1000)   //here we are using the throttle which is the interval of 1000 milliseconds
 window.addEventListener('resize', throttledHandleResize)
