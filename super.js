@@ -1,6 +1,6 @@
 class Character {
   #health; //health is set to private
-  static count = 0;  //static method is always on the count rather than the object
+  static count = 0; //static method is always on the count rather than the object
   constructor(name) {
     this.name = name;
     this.#health = 100;
@@ -11,9 +11,8 @@ class Character {
   static getCount() {
     return this.count;
   }
-  static incrementCount(){
-     Character.count++;
-
+  static incrementCount() {
+    Character.count++;
   }
   gethealth() {
     return this.#health; //as the health is private
@@ -28,8 +27,8 @@ class Character {
 
   takeDamage(damage) {
     this.#health -= damage; //decreasing the health by the certain amount of damage
-    if (this.#health<0){
-        this.#health = 0
+    if (this.#health < 0) {
+      this.#health = 0;
     }
   }
   get isAlive() {
@@ -70,7 +69,7 @@ Status Report:
 }
 
 class Hero extends Character {
-  constructor(name ,inventory = []) {
+  constructor(name, inventory = []) {
     super(name); //here name,isalive and health is inherited from a character class
     this.inventory = inventory; //this is the collection of items for a hero
   }
@@ -133,31 +132,93 @@ console.log(medea.getStatus()); // Medea has 95 health and is alive.`
 console.log(merlin.getStatus()); // Merlin has 85 health and is alive.
 console.log(`Total characters created: ${Character.getCount()} `); // Total characters created: 3
 
-
-function handleResize(e){
-    console.log('resize happened on event: ' + e)
+function handleResize(e) {
+  console.log("resize happened on event: " + e);
 }
 //so the throttle is the function that delays the task or the function for certain interval of time even if the user request it for many times.so, the function only runs after this delay
 function throttle(func, delay) {
-    let throttleTimeout = null
-/*
+  let throttleTimeout = null;
+  /*
 Challenge:
 1. Recreate the logic using an arrow function. 
    🤔 What is the best way to pass arguments remembering 
    that ideally this throttle function is reusable?
    🛟 hint.md for help! 
 */
-  return (...args)=>{   //here we are capturing the arguments
-    if(!throttleTimeout) {
-      func(...args);    //then we are using the passed function with its passed parameter which is an event in this case as in the arrow function, we cannot apply 'this' method
-      throttleTimeout=setTimeout(() => {
-        throttleTimeout=null;
+  return (...args) => {
+    //here we are capturing the arguments
+    if (!throttleTimeout) {
+      func(...args); //then we are using the passed function with its passed parameter which is an event in this case as in the arrow function, we cannot apply 'this' method
+      throttleTimeout = setTimeout(() => {
+        throttleTimeout = null;
       }, delay);
     }
+  };
+}
+const throttledHandleResize = throttle(handleResize, 1000);
+window.addEventListener("resize", throttledHandleResize);
+
+/*
+Challenge:
+    1. Create a generator that yields a random hex code on demand.
+    - You might need to research how you can do something infinitely 
+      inside a generator.
+    - See if you can work out how to generate a random hex code.
+    🛟 hint.md for help
+*/
+//so a generator function is a type of function that yeilds the data or any value that we want from there,
+//we can manipulate the data with .next()
+function* generator() {
+  const letters = "0123456789ABCDEF";
+  while (true) {
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random(letters) * 16)];
+    }
+    yield color; //this will yield different colors
   }
 }
-const throttledHandleResize = throttle(handleResize, 1000)
-window.addEventListener('resize', throttledHandleResize)
+const colorgenerator = generator(); //instance of color
+
+document.getElementById("nextColorButton").addEventListener("click", () => {
+  /*
+Challenge:
+    2. When the "Next Color" button is clicked, update 
+       the textContent and backgroundColor attributes below.
+*/
+  color = colorgenerator.next().value;
+  document.getElementById("colorText").textContent = color;
+  document.getElementById("colorDisplay").style.backgroundColor = color;
+});
 
 
 
+import { organizationData } from '/data.js'
+
+function searchEmployeeById(data,i) { 
+  let results=[] /*  here i means the id
+  
+Challenge:
+1. Write a function that searches for an employee in 'organizationData'. The function should recursively traverse the nested objects and find all employees with a specified ID. 
+
+Stretch Goal:
+💪 Complete the challenge without declaring any variable in the global scope.
+*/
+       for (let key in data) {
+           if (key=='employees'){   //if we find the key which is equal to employees
+             results=[...results,...data[key].filter((empl)=>empl.id ==i)]//here the employees' id must be equal to i
+           }
+
+           if(typeof data[key]==='object' && data[key]!=null) {    
+                const deeper=searchEmployeeById(data[key],i);   //recursively going into deeper level by passing the nested object and the value of id
+                results=[...results,...deeper]   //concating the output of the nested objects in the results too
+              }
+
+       }
+       return results
+
+}
+
+const employee = searchEmployeeById(organizationData, 5) // pass in data and employee id.
+
+console.log(employee) // Output: [{id: 5, name: "Kwame Mensah", position: "Sales Executive"}]
