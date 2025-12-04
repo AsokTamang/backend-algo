@@ -230,3 +230,14 @@ console.log(employee) // Output: [{id: 5, name: "Kwame Mensah", position: "Sales
 2. Inside "geography_game", create a new file called "rules.txt", and list the contents of "geography_game".
 
 Hint: What should you always do as the first thing before typing any other commands?*/
+
+//for the files
+//so we can easily create files using touch any.js or any.txt anywhere using touch../any.js if we want to create a file in the ancestor dir
+//and we can delete the file using rm any.js
+
+
+//for the folders
+//we can easily create folder using mkdir any  also sameway mkdir../any or mkdir../../any
+//and inorder to remove the empty dir we can use rmdir any but
+//for the non-empty dir, we must use rm -r any
+//here any is the folder name
