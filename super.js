@@ -250,3 +250,5 @@ Hint: What should you always do as the first thing before typing any other comma
 4. Open the file in the sidebar to check that everything went well.
 
 Important: Wrap your strings in single quotes.*/
+//and inorder to write in the files we must use 'any ccode'>filename  and if this file doesnot exists then it automatically creates this file
+//and inorder to add more codes or append the codes in the existing file we must use 'code' >> filename >> this symbol helps us to append the code in the existing file
