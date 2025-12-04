@@ -252,3 +252,13 @@ Hint: What should you always do as the first thing before typing any other comma
 Important: Wrap your strings in single quotes.*/
 //and inorder to write in the files we must use 'any ccode'>filename  and if this file doesnot exists then it automatically creates this file
 //and inorder to add more codes or append the codes in the existing file we must use 'code' >> filename >> this symbol helps us to append the code in the existing file
+
+// > redirection operator
+// >> append redirection operator
+
+/*
+Challenge: Read from files
+1. Find the file "external_people.txt" and print its contents to the terminal to see what it is.
+2. Read the contents of "external_people.txt" again, but this time, redirect and append it to "team_members.txt".
+3. Print the contents of "team_members.txt" to the terminal to check that everything went well.
+4. Delete "external_people.txt".*/
