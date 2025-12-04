@@ -241,3 +241,12 @@ Hint: What should you always do as the first thing before typing any other comma
 //and inorder to remove the empty dir we can use rmdir any but
 //for the non-empty dir, we must use rm -r any
 //here any is the folder name
+
+
+/*Main challenge: Write to files
+1. Inside "geography_game", create a new directory called "about_the_game".
+2. Write the string 'AB, CEO and creative genius' to a new file called "team_members.txt". This file should be placed inside "about_the_game".
+3. Append the string '<your initials>, hard-working intern' to the file "team_members.txt".
+4. Open the file in the sidebar to check that everything went well.
+
+Important: Wrap your strings in single quotes.*/
