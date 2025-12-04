@@ -222,3 +222,11 @@ Stretch Goal:
 const employee = searchEmployeeById(organizationData, 5) // pass in data and employee id.
 
 console.log(employee) // Output: [{id: 5, name: "Kwame Mensah", position: "Sales Executive"}]
+
+
+
+/*Challenge: Create & delete files
+1. Find the file "virus.exe" and delete it. Lists the contents of the parent directory of "virus.exe" to check that the file was deleted correctly.
+2. Inside "geography_game", create a new file called "rules.txt", and list the contents of "geography_game".
+
+Hint: What should you always do as the first thing before typing any other commands?*/
