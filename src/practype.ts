@@ -2,10 +2,13 @@ type Pizza = {
   name: string;
   price: number;
 };
+
+type statustype = "ordered" | "completed"; //here we are declaring that the type of status must be either ordered or completed and this syntax is called literal type unions
+
 type Order = {
   id: number;
   pizza: Pizza;
-  status: string;
+  status: statustype;
 };
 
 const menu = [
@@ -38,12 +41,12 @@ function addNewPizza(pizzaobj: Pizza) {
 let nextOrderId = 1;
 function placeOrder(pname: string) {
   const a: Pizza = menu.find((pobj) => pobj.name === pname)!; //here we are using find inorder to return the single object and ! shows that this object exists in our menu
-  if (!a){
-    console.log('our menu doesnot has this item');
-    return
+  if (!a) {
+    console.log("our menu doesnot has this item");
+    return;
   }
   cashInRegister += a.price; //here we are using ! so that a is not undefined
-  const neworder = { pizza: a, status: "ordered", id: nextOrderId };
+  const neworder: Order = { pizza: a, status: "ordered", id: nextOrderId }; //here we are declaring that the neworder is of type Order where we use literal type unions
   nextOrderId += 1;
   orderQueue.push(neworder);
   return neworder;
@@ -58,9 +61,9 @@ function placeOrder(pname: string) {
  */
 function completeOrder(orderId: number) {
   const order = orderQueue.find((ord) => ord.id === orderId);
-  if (!order){
-    console.log('This item hasnot been ordered!');
-    return
+  if (!order) {
+    console.log("This item hasnot been ordered!");
+    return;
   }
   order.status = "completed";
   return order;
