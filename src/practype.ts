@@ -38,7 +38,11 @@ function addNewPizza(pizzaobj: Pizza) {
 let nextOrderId = 1;
 function placeOrder(pname: string) {
   const a: Pizza = menu.find((pobj) => pobj.name === pname)!; //here we are using find inorder to return the single object and ! shows that this object exists in our menu
-  cashInRegister += a!.price; //here we are using ! so that a is not undefined
+  if (!a){
+    console.log('our menu doesnot has this item');
+    return
+  }
+  cashInRegister += a.price; //here we are using ! so that a is not undefined
   const neworder = { pizza: a, status: "ordered", id: nextOrderId };
   nextOrderId += 1;
   orderQueue.push(neworder);
@@ -54,7 +58,11 @@ function placeOrder(pname: string) {
  */
 function completeOrder(orderId: number) {
   const order = orderQueue.find((ord) => ord.id === orderId);
-  order!.status = "completed";
+  if (!order){
+    console.log('This item hasnot been ordered!');
+    return
+  }
+  order.status = "completed";
   return order;
 }
 
