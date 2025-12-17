@@ -1,7 +1,12 @@
 type Pizza = {
-  name:string
-  price:number
-}
+  name: string;
+  price: number;
+};
+type Order = {
+  id: number;
+  pizza: Pizza;
+  status: string;
+};
 
 const menu = [
   { name: "Margherita", price: 8 },
@@ -11,11 +16,7 @@ const menu = [
 ];
 
 let cashInRegister = 100;
-let orderQueue:{
-  pizza: { name: string; price: number } | undefined;
-  status: string;
-  id: number;
-}[] = [];  //here we are assigning the type of this const which is an array of object having properties and corresponding values
+let orderQueue: Order[] = []; //here we are assigning the type of this const which is an array of object having properties and corresponding values
 
 /**
  * Challenge: Add a utility function "addNewPizza" that takes a pizza object
@@ -36,9 +37,7 @@ function addNewPizza(pizzaobj: Pizza) {
  */
 let nextOrderId = 1;
 function placeOrder(pname: string) {
-  const a: Pizza | undefined = menu.find(
-    (pobj) => pobj.name === pname
-  ); //here we are using find inorder to return the single object
+  const a: Pizza = menu.find((pobj) => pobj.name === pname)!; //here we are using find inorder to return the single object and ! shows that this object exists in our menu
   cashInRegister += a!.price; //here we are using ! so that a is not undefined
   const neworder = { pizza: a, status: "ordered", id: nextOrderId };
   nextOrderId += 1;
