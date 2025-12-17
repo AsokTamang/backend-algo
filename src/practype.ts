@@ -1,3 +1,8 @@
+type Pizza = {
+  name:string
+  price:number
+}
+
 const menu = [
   { name: "Margherita", price: 8 },
   { name: "Pepperoni", price: 10 },
@@ -17,7 +22,7 @@ let orderQueue:{
  * and adds it to the menu.
  */
 
-function addNewPizza(pizzaobj: { name: string; price: number }) {
+function addNewPizza(pizzaobj: Pizza) {
   menu.push(pizzaobj);
 }
 
@@ -31,7 +36,7 @@ function addNewPizza(pizzaobj: { name: string; price: number }) {
  */
 let nextOrderId = 1;
 function placeOrder(pname: string) {
-  const a: { name: string; price: number } | undefined = menu.find(
+  const a: Pizza | undefined = menu.find(
     (pobj) => pobj.name === pname
   ); //here we are using find inorder to return the single object
   cashInRegister += a!.price; //here we are using ! so that a is not undefined
