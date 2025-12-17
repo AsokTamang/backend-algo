@@ -73,3 +73,7 @@ app.listen(PORT, () => {
 
 
 console.log('checking')
+
+console.log('checking the git diff')
+
+//so git diff is used to provide us the codes that have been added or deleted or in simple language the change in code in our any files of current repo
