@@ -12,13 +12,8 @@ type Order = {
   status: statustype;
 };
 
-const menu = [
-  { id: 1, name: "Margherita", price: 8 },
-  { id: 2, name: "Pepperoni", price: 10 },
-  { id: 3, name: "Hawaiian", price: 10 },
-  { id: 4, name: "Veggie", price: 9 },
-];
-
+let menu: Pizza[] = [];
+let nextpizzaid = 1;
 let cashInRegister = 100;
 let orderQueue: Order[] = []; //here we are assigning the type of this const which is an array of object having properties and corresponding values
 
@@ -30,6 +25,7 @@ let orderQueue: Order[] = []; //here we are assigning the type of this const whi
 function addNewPizza(pizzaobj: Pizza): void {
   //here void means this function doesnot return anything
   menu.push(pizzaobj);
+  nextpizzaid += 1;
 }
 
 let nextOrderId = 1;
@@ -63,7 +59,7 @@ function completeOrder(orderId: number): Order | undefined {
   return order;
 }
 
-function getPizzaDetail(identifier: string | number): Pizza | undefined {   
+function getPizzaDetail(identifier: string | number): Pizza | undefined {
   let pizzaa;
   if (typeof identifier === "string") {
     return menu.find((item) => item.name === identifier);
@@ -73,10 +69,13 @@ function getPizzaDetail(identifier: string | number): Pizza | undefined {
     throw new TypeError("Identifier must be of type string or a number.");
   }
 }
-
-addNewPizza({ id: 5, name: "Chicken Bacon Ranch", price: 12 });
-addNewPizza({ id: 6, name: "BBQ Chicken", price: 12 });
-addNewPizza({ id: 7, name: "Spicy Sausage", price: 11 });
+addNewPizza({ id: nextpizzaid, name: "Margherita", price: 8 });
+addNewPizza({ id: nextpizzaid, name: "Pepperoni", price: 10 });
+addNewPizza({ id: nextpizzaid, name: "Hawaiian", price: 10 });
+addNewPizza({ id: nextpizzaid, name: "Veggie", price: 9 });
+addNewPizza({ id: nextpizzaid, name: "Chicken Bacon Ranch", price: 12 });
+addNewPizza({ id: nextpizzaid, name: "BBQ Chicken", price: 12 });
+addNewPizza({ id: nextpizzaid, name: "Spicy Sausage", price: 11 });
 
 placeOrder("Chicken Bacon Ranch");
 completeOrder(1);
