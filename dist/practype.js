@@ -1,11 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const menu = [
-    { name: "Margherita", price: 8 },
-    { name: "Pepperoni", price: 10 },
-    { name: "Hawaiian", price: 10 },
-    { name: "Veggie", price: 9 },
-];
+let menu = [];
+let nextpizzaid = 1;
 let cashInRegister = 100;
 let orderQueue = []; //here we are assigning the type of this const which is an array of object having properties and corresponding values
 /**
@@ -13,21 +9,19 @@ let orderQueue = []; //here we are assigning the type of this const which is an 
  * and adds it to the menu.
  */
 function addNewPizza(pizzaobj) {
-    menu.push(pizzaobj);
+    //here void means this function doesnot return anything
+    menu.push({ ...pizzaobj, id: nextpizzaid }); //here we are extending the object and adding the new key-value pair
+    nextpizzaid += 1;
 }
-/**
- * Write another utility function, placeOrder, that takes a pizza name parameter and:
- * 1. finds that pizza object in the menu,
- * 2. adds the income to the cashInRegister,
- * 3. pushes a new "order object" to the orderQueue
- *    (e.g. { pizza: selectedPizzaObjectFromStep1, status: "ordered" })
- * 4. returns the new order object (just in case we need it later)
- */
 let nextOrderId = 1;
 function placeOrder(pname) {
-    const a = menu.find((pobj) => pobj.name === pname); //here we are using find inorder to return the single object
+    const a = menu.find((pobj) => pobj.name === pname); //here we are using find inorder to return the single object and ! shows that this object exists in our menu
+    if (!a) {
+        console.log("our menu doesnot has this item");
+        return;
+    }
     cashInRegister += a.price; //here we are using ! so that a is not undefined
-    const neworder = { pizza: a, status: "ordered", id: nextOrderId };
+    const neworder = { pizza: a, status: "ordered", id: nextOrderId }; //here we are declaring that the neworder is of type Order where we use literal type unions
     nextOrderId += 1;
     orderQueue.push(neworder);
     return neworder;
@@ -40,10 +34,30 @@ function placeOrder(pname) {
  * Note: you'll need to ensure that we're adding IDs to our orders when we create new orders. You can use a global `nextOrderId` variable and increment it every time a new order is created to simulate real IDs being managed for us by a database.
  */
 function completeOrder(orderId) {
-    const order = orderQueue.find((ord) => ord.id === orderId);
+    const order = orderQueue.find((ord) => ord.id === orderId); //here we are finding the order of item based on the order id
+    if (!order) {
+        console.log("This item hasnot been ordered!");
+        return;
+    }
     order.status = "completed";
     return order;
 }
+function getPizzaDetail(identifier) {
+    let pizzaa;
+    if (typeof identifier === "string") {
+        return menu.find((item) => item.name === identifier);
+    }
+    else if (typeof identifier === "number") {
+        return menu.find((order) => order.id === identifier); //first of all we are finding the order using the id then
+    }
+    else {
+        throw new TypeError("Identifier must be of type string or a number.");
+    }
+}
+addNewPizza({ name: "Margherita", price: 8 });
+addNewPizza({ name: "Pepperoni", price: 10 });
+addNewPizza({ name: "Hawaiian", price: 10 });
+addNewPizza({ name: "Veggie", price: 9 });
 addNewPizza({ name: "Chicken Bacon Ranch", price: 12 });
 addNewPizza({ name: "BBQ Chicken", price: 12 });
 addNewPizza({ name: "Spicy Sausage", price: 11 });
