@@ -1,3 +1,4 @@
+//so omit is the utitlity function of TS which let us to remove the specific property or union of specific properties of a specific type, separated by | and these are coded as string inorder to design a new type
 type User = {
     id: number
     username: string

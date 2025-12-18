@@ -22,11 +22,12 @@ let orderQueue: Order[] = []; //here we are assigning the type of this const whi
  * and adds it to the menu.
  */
 
-function addNewPizza(pizzaobj: Pizza): void {
+function addNewPizza(pizzaobj:Omit<Pizza,'id'>): Pizza {   //here we are omitting the property id of Pizza inorder to design a new type for pizzaobj
   //here void means this function doesnot return anything
-
-  menu.push({...pizzaobj,id:nextpizzaid});   //here we are extending the object and adding the new key-value pair
+  const newpizza = {...pizzaobj,id:nextpizzaid};
+  menu.push(newpizza);   //here we are extending the object and adding the new key-value pair
   nextpizzaid += 1;
+  return newpizza
 }
 
 let nextOrderId = 1;
