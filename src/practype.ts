@@ -24,7 +24,8 @@ let orderQueue: Order[] = []; //here we are assigning the type of this const whi
 
 function addNewPizza(pizzaobj: Pizza): void {
   //here void means this function doesnot return anything
-  menu.push(pizzaobj);
+
+  menu.push({...pizzaobj,id:nextpizzaid});   //here we are extending the object and adding the new key-value pair
   nextpizzaid += 1;
 }
 
@@ -69,13 +70,13 @@ function getPizzaDetail(identifier: string | number): Pizza | undefined {
     throw new TypeError("Identifier must be of type string or a number.");
   }
 }
-addNewPizza({ id: nextpizzaid, name: "Margherita", price: 8 });
-addNewPizza({ id: nextpizzaid, name: "Pepperoni", price: 10 });
-addNewPizza({ id: nextpizzaid, name: "Hawaiian", price: 10 });
-addNewPizza({ id: nextpizzaid, name: "Veggie", price: 9 });
-addNewPizza({ id: nextpizzaid, name: "Chicken Bacon Ranch", price: 12 });
-addNewPizza({ id: nextpizzaid, name: "BBQ Chicken", price: 12 });
-addNewPizza({ id: nextpizzaid, name: "Spicy Sausage", price: 11 });
+addNewPizza({ name: "Margherita", price: 8 });
+addNewPizza({ name: "Pepperoni", price: 10 });
+addNewPizza({ name: "Hawaiian", price: 10 });
+addNewPizza({ name: "Veggie", price: 9 });
+addNewPizza({ name: "Chicken Bacon Ranch", price: 12 });
+addNewPizza({ name: "BBQ Chicken", price: 12 });
+addNewPizza({ name: "Spicy Sausage", price: 11 });
 
 placeOrder("Chicken Bacon Ranch");
 completeOrder(1);
