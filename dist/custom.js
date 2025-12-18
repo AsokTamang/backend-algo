@@ -1,7 +1,5 @@
-"use strict";
 //so inorder to assign the type of return in a function,
 // we use function name (parameter:type) : (type of return) {}
-Object.defineProperty(exports, "__esModule", { value: true });
 let person1 = {
     name: "Joe",
     age: 42,
@@ -17,4 +15,5 @@ let person2 = {
  * manually type it as an array of Person types
  */
 let people = [person1, person2];
+export {};
 //# sourceMappingURL=custom.js.map
