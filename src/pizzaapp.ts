@@ -44,13 +44,13 @@ function placeOrder(pizza: Pizza): Order | undefined {
   return newOrder;
 }
 
-function addToArray<Type>(array: Type[], item: Type) {
+function addToArray<Type>(array: Type[], item: Type):Type[] {  //here this function also returns the array of same type of passed arguments
   //here we are using Generic function of Ts inorder to use any kind of types in our function
   //which makes it flexible to pass any type of arguments while calling this addToArray fu
   array.push(item);
   return array;
 }
-addToArray(menu, { id: nextPizzaId++, name: "Chicken Bacon Ranch", price: 12 });
+addToArray<Pizza>(menu, { id: nextPizzaId++, name: "Chicken Bacon Ranch", price: 12 });
 addToArray<Order>(orderQueue, {
   id: nextOrderId++,
   pizza: menu[2]!,
