@@ -1,5 +1,5 @@
 type Pizza = {
-  id:number
+  id: number;
   name: string;
   price: number;
 };
@@ -13,10 +13,10 @@ type Order = {
 };
 
 const menu = [
-  {id:1, name: "Margherita", price: 8 },
-  {id:2, name: "Pepperoni", price: 10 },
-  {id:3, name: "Hawaiian", price: 10 },
-  { id:4,name: "Veggie", price: 9 },
+  { id: 1, name: "Margherita", price: 8 },
+  { id: 2, name: "Pepperoni", price: 10 },
+  { id: 3, name: "Hawaiian", price: 10 },
+  { id: 4, name: "Veggie", price: 9 },
 ];
 
 let cashInRegister = 100;
@@ -27,12 +27,13 @@ let orderQueue: Order[] = []; //here we are assigning the type of this const whi
  * and adds it to the menu.
  */
 
-function addNewPizza(pizzaobj: Pizza) {
+function addNewPizza(pizzaobj: Pizza): void {
+  //here void means this function doesnot return anything
   menu.push(pizzaobj);
 }
 
 let nextOrderId = 1;
-function placeOrder(pname: string) {
+function placeOrder(pname: string): Order | undefined {
   const a: Pizza = menu.find((pobj) => pobj.name === pname)!; //here we are using find inorder to return the single object and ! shows that this object exists in our menu
   if (!a) {
     console.log("our menu doesnot has this item");
@@ -52,7 +53,7 @@ function placeOrder(pname: string) {
  *
  * Note: you'll need to ensure that we're adding IDs to our orders when we create new orders. You can use a global `nextOrderId` variable and increment it every time a new order is created to simulate real IDs being managed for us by a database.
  */
-function completeOrder(orderId: number) {
+function completeOrder(orderId: number): Order | undefined {
   const order = orderQueue.find((ord) => ord.id === orderId); //here we are finding the order of item based on the order id
   if (!order) {
     console.log("This item hasnot been ordered!");
@@ -62,19 +63,20 @@ function completeOrder(orderId: number) {
   return order;
 }
 
-function getPizzaDetail(identifier: string | number) {
-  let pizzaa
+function getPizzaDetail(identifier: string | number): Pizza | undefined {   
+  let pizzaa;
   if (typeof identifier === "string") {
-     pizzaa=menu.find((item) => item.name === identifier);
+    return menu.find((item) => item.name === identifier);
+  } else if (typeof identifier === "number") {
+    return menu.find((order) => order.id === identifier); //first of all we are finding the order using the id then
   } else {
-       pizzaa=menu.find((order)=>order.id===identifier)  //first of all we are finding the order using the id then
+    throw new TypeError("Identifier must be of type string or a number.");
   }
-  return pizzaa;
 }
 
-addNewPizza({id:5, name: "Chicken Bacon Ranch", price: 12 });
-addNewPizza({ id:6,name: "BBQ Chicken", price: 12 });
-addNewPizza({id:7, name: "Spicy Sausage", price: 11 });
+addNewPizza({ id: 5, name: "Chicken Bacon Ranch", price: 12 });
+addNewPizza({ id: 6, name: "BBQ Chicken", price: 12 });
+addNewPizza({ id: 7, name: "Spicy Sausage", price: 11 });
 
 placeOrder("Chicken Bacon Ranch");
 completeOrder(1);

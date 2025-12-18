@@ -1,3 +1,6 @@
+//so inorder to assign the type of return in a function,
+// we use function name (parameter:type) : (type of return) {}
+
 type Person = {
     name: string
     age: number
